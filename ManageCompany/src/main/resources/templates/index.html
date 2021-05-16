@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+		<h1>Corporate Details</h1>
+
+		<a th:href="@{/showCompanyForm}" class="btn btn-primary btn-sm mb-3">
+			Add </a>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Corporate Name</th>
+					<th>Corporate Id</th>
+					<th>Account Numbers</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="company :${listCompany}">
+					<td th:text="${company.cName}"></td>
+					<td th:text="${company.cId}"></td>
+					<td th:text="${company.cAcc}"></td>
+					<td> <a th:href="@{/showFormForUpdate/{id}(id=${company.id})}" class="btn btn-primary">Update</a>
+                        <a th:href="@{/deleteCompany/{id}(id=${company.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
